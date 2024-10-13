@@ -1,0 +1,73 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Specify the Android Gradle Plugin version and Firebase
+        classpath "com.android.tools.build:gradle:8.1.0" // Ensure this matches your Android Gradle plugin version
+        classpath "com.google.gms:google-services:4.3.14" // Firebase plugin for Google services
+    }
+}
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Flutter plugin
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+// Retrieve version information from local.properties or set defaults
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode", "1")
+def flutterVersionName = localProperties.getProperty("flutter.versionName", "1.0")
+
+android {
+    namespace = "com.example.u_summit_homes" // App's unique namespace
+    compileSdk = 33 // SDK version
+    ndkVersion = "21.3.6528147" // Optional NDK version
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.u_summit_homes"
+        minSdk = 23 // Minimum SDK version
+        targetSdk = 33 // Target SDK version
+        versionCode = flutterVersionCode.toInteger() // Convert version code to integer
+        versionName = flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+            minifyEnabled false // Disable minification for release
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+// Flutter-specific configuration
+flutter {
+    source = "../.." // Set this to the correct relative path of your Flutter project
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Apply Firebase services at the bottom
+apply plugin: 'com.google.gms.google-services'

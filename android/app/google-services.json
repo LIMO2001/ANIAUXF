@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "464434589023",
+    "project_id": "homes-6390b",
+    "storage_bucket": "homes-6390b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464434589023:android:fdce4eca56fff55a82daea",
+        "android_client_info": {
+          "package_name": "com.example.u_summit_homes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD6cciLODJPo7uCEDGMRgrOgQsg9iTu1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

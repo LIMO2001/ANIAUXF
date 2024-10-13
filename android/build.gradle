@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Add classpath dependencies here (only inside buildscript block)
+        classpath 'com.android.tools.build:gradle:8.1.0' // Ensure this matches your Android Gradle plugin version here
+        classpath "com.google.gms:google-services:4.3.14" // Firebase plugin (if needed)
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
+dependencies {
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.68'
+}
